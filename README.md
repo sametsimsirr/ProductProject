@@ -1,6 +1,7 @@
 # ProductProject
 
 Controller Katmanı
+
 BaseController katmanı, requestlerin ilk geldiği katmandır. Bu sınıf, TEntity ve TEntityService türleriyle çalışır. 
 TEntity türü, veri tabanındaki bir tablonun özelliklerini sağlar.Projede oluşturulan diğer Controller’lar bu controller sınıfından türetilmiştir.
 BaseController sınıfı, TEntityService türünde bir Service sınıfını parametre olarak alır ve bu sınıfı service değişkenine atar. 
@@ -11,6 +12,7 @@ Bu sayede veri tabanındaki bir tablo için Id özelliğine sahip bir sınıf ol
 
 
 Service Katmanı
+
 Service sınıfı, veri tabanı işlemlerinin gerçekleştirilmesi için kurgulanmış bir katmandır. 
 Bu sınıf, IRepository ve IUnitOfWork arayüzlerini kullanarak veri tabanı işlemlerini gerçekleştirir. 
 Bu arayüzler, veri tabanı işlemlerini gerçekleştirirken kullanılacak metotları sağlar.
@@ -26,6 +28,7 @@ Bunun yanı sıra, veri tabanı işlemleri öncesi ve sonrasında çalışacak o
 Bu metotlar, veri tabanı işlemleri öncesi ve sonrasında çalıştırılacak olan işlemleri gerçekleştirir.
 
 Repository Katmanı
+
 BaseRepository sınıfı, veri tabanı işlemlerinin gerçekleştirilebileceği bir sınıftır. 
 Bu sınıf, Microsoft.EntityFrameworkCore kütüphanesini kullanarak veri tabanı işlemlerini gerçekleştirir.
 BaseRepository sınıfı, TEntity türünde bir sınıfın özelliklerine sahip bir parametre alır ve bu parametre IBase arayüzünü implemente etmiş olmalıdır.
@@ -38,16 +41,19 @@ BaseRepository sınıfı ayrıca, nesnelerin serbest bırakılmasını sağlamak
 bu metodun yardımcı metodu olan Dispose(bool disposing) metodunu içerir. Bu metotlar, sınıfın kullandığı kaynakların serbest bırakılmasını sağlar.
 
 UnitOfWork Design Pattern
+
 Projede UnitOfWork design patterni kullanmayı tercih ettim. 
 Entity üzerinde yapılan her değişikliğin anlık olarak database e yansıması yerine, işlemlerin toplu halde tek bir kanaldan gerçekleşmesini sağlamak için UnitOfWork design patterni kullanmayı tercih ettim. 
 İşlemler tek bir kanaldan(tek bir transaction) toplu halde yapıldığı için performansı artı yönde etkileyecektir.Ayrıca işlemleri geri alma(rollback), 
 hangi tabloda ne işlem yapıldı,kaç kayıt eklendi gibi sorulara da cevap verebilir olması tercihimde etkili olmuştur.
 
 Xunit ile Unit Test
+
 Projede yazdığım unit testleri için Xunit kütüphanesini kullandım.
 Hem daha önce kullandığım bir kütüphane olduğu için hem de testleri paralel olarak çalıştırma ve testleri etiketlendirerek gruplandırma fonksiyonları bulunduğu için Xunit kütüphanesini tercih ettim.
 
 Özetle;
+
 -	Öncelikle controller katmanındaki metotlara requestler gelmektedir.
 -	Sonrasında belli validationlar yapıldıktan sonra requestler service katmanına aktarılmaktadır.Burada entityleri modellere çevrilebilmek için AutoMapper’i tercih ettim.
 -	Service katmanında entity ile ilgili gerekli işlemler yapıldıktan sonra Repository katmanına veritabanı işlemleri yapılması için akış gerçekleşir.
