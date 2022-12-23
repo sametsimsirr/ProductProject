@@ -2,7 +2,7 @@
 
 Controller Katmanı
 
-BaseController katmanı, requestlerin ilk geldiği katmandır. Bu sınıf, TEntity ve TEntityService türleriyle çalışır. 
+BaseController sınıfı, requestlerin ilk geldiği katmandır. Bu sınıf, TEntity ve TEntityService türleriyle çalışır. 
 TEntity türü, veri tabanındaki bir tablonun özelliklerini sağlar.Projede oluşturulan diğer Controller’lar bu controller sınıfından türetilmiştir.
 BaseController sınıfı, TEntityService türünde bir Service sınıfını parametre olarak alır ve bu sınıfı service değişkenine atar. 
 Bu sayede BaseController sınıfı içerisinde TEntityService türünde bir Service sınıfının metotlarına erişilebilir.
